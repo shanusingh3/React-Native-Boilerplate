@@ -1,0 +1,3 @@
+BRAND_NAME=GEMS
+BASE_URL=https:/$()/gems-apig.azurewebsites.net/api
+ENV=DEV

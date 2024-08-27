@@ -1,0 +1,32 @@
+const Fonts = {
+  // OpenSansLight: 'OpenSans-Light',
+  // OpenSansLightItalic: 'OpenSans-LightItalic',
+  // OpenSansRegular: 'OpenSans-Regular',
+  // OpenSansMedium: 'OpenSans-Medium',
+  // OpenSansMediumItalic: 'OpenSans-MediumItalic',
+  // OpenSansSemiBold: 'OpenSans-SemiBold',
+  // OpenSansSemiBoldItalic: 'OpenSans-SemiBoldItalic',
+  // OpenSansBold: 'OpenSans-Bold',
+  // OpenSansBoldItalic: 'OpenSans-BoldItalic',
+  // OpenSansExtraBold: 'OpenSans-ExtraBold',
+  // OpenSansExtraBoldItalic: 'OpenSans-ExtraBoldItalic',
+  //TODO: commented out the old font files, have to remove once we add all the new font files. Once all are added we should remove the old font files.
+  OpenSansLight: 'Roboto-Light',
+  OpenSansLightItalic: 'Roboto-LightItalic',
+  OpenSansRegular: 'Roboto-Regular',
+  OpenSansMedium: 'Roboto-Medium',
+  OpenSansMediumItalic: 'Roboto-MediumItalic',
+  OpenSansSemiBold: 'OpenSans-SemiBold',
+  OpenSansSemiBoldItalic: 'OpenSans-SemiBoldItalic',
+  OpenSansBold: 'Roboto-Bold',
+  OpenSansBoldItalic: 'Roboto-BoldItalic',
+  OpenSansExtraBold: 'Roboto-Black',
+  OpenSansExtraBoldItalic: 'Roboto-BlackItalic',
+  SFUIDisplayLight: 'SF-UI-Display-Light',
+  SFUIDisplayBlack: 'SFUIDisplay-Black',
+  SFUIDisplayBold: 'SFUIDisplay-Bold',
+  SFUIDisplayMedium: 'SFUIDisplay-Medium',
+  SFUIDisplayRegular: 'SFUIDisplay-Regular',
+};
+
+export default Fonts;
