@@ -32,8 +32,8 @@ const PropertyDetailsScreen: React.FC<Props> = (props) => {
   const { item } = route.params;
 
   const handleUnlock = useCallback(() => {
-    showSuccessToast('Door Unlocked.')
-  }, [])
+    showSuccessToast('Door Unlocked.');
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -41,7 +41,9 @@ const PropertyDetailsScreen: React.FC<Props> = (props) => {
       <Text fontSize={scaler(18)} mt={8}>
         {item.title}
       </Text>
-      <Text variant='placeholder' mt={8}>{item.desciption}</Text>
+      <Text variant='placeholder' mt={8}>
+        {item.desciption}
+      </Text>
       <Text mt={8}>Address: {item.details}</Text>
       {isValidToUnlock ? (
         <Button

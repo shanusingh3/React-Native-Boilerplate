@@ -7,5 +7,5 @@ export default {
   auth: auth.reducer,
   loader: loader.reducer,
   location: location.reducer,
-  listing: listing.reducer
+  listing: listing.reducer,
 };

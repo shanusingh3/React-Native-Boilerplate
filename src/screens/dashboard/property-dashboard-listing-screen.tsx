@@ -19,11 +19,11 @@ import ListingThunk from '@app/redux/ducks/listing/listing-thunk';
 const DashboardListingScreen = () => {
   const navigation = useNavigation();
   const _data = ListingSelector.getPropertyList();
-  useEffect(()=>{
+  useEffect(() => {
     //TODO: Pending Pagination
-    //Pagination Logic start from here, initally fetch first page 
-    dispatch(ListingThunk.getPropertyList())
-  },[])
+    //Pagination Logic start from here, initally fetch first page
+    dispatch(ListingThunk.getPropertyList());
+  }, []);
 
   const loadMore = () => {};
 
