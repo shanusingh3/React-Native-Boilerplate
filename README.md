@@ -1,6 +1,6 @@
-# ComputerShare GEMS
+# Unlockr
 
-The GEMS global entity management platform from Computershare offers a centralized, electronic solution for companies to achieve global entity compliance. The Web application already exists. The project is to build an application for IOS devices.
+Unlockr is a powerful mobile application designed to streamline the process of accessing and managing properties for potential buyers. By leveraging cutting-edge technology, Unlockr provides a convenient and secure solution for both real estate agents and home seekers.
 ## Getting Started
 
 Please install the required modules using "yarn."
@@ -10,7 +10,7 @@ Whenever you encounter problems with caches, you can run "yarn clean:ios."
 For code commits, please use "yarn commit" instead of using git commit or any other source control tool like an IDE or SourceTree.
 # React Native BoilerPlate
 
-A basic boilerplater for react native with new Arch enabled which supports React 18 and React Native 0.72.0 can extended and verified up to 0.72.0-rc.6.
+A basic boilerplater for react native with new Arch enabled which supports React 18 and React Native 0.74.0 and above.
 
 ## Commit Strategies
 
@@ -37,7 +37,7 @@ Few of the library and patterns which are pre-added in the BoilerPlate:
 
 **Packages:** React, Redux, Shopify Re-Style, Redux Toolkit, Axios, i18next, Toast.
 
-**Version:** React 18, React Native 0.72.0
+**Version:** React 18, React Native 0.74.0
 
 ## Rename Boiler Plate
 
@@ -437,13 +437,3 @@ export const applyAxiosResponseInterceptor = (axiosInstance: AxiosInstance) => {
 ```
 
 `NOTE: When creating any new service don't forgot to call these and pass the instance of the axios api. Please refer to src/services/product-service.ts for example.`
-
-## Future Implementation Plans based on Priority
-
-- Code Push
-- Git cz
-- Deep Linking Wrapper
-- More Scripts for automation release process and Linting
-- Snapshot Testing for UI
-
----

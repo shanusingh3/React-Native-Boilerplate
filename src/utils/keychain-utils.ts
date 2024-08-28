@@ -1,7 +1,7 @@
 import * as Keychain from 'react-native-keychain';
 
 export const setKeychainPassword = async (field: string) => {
-  await Keychain.setGenericPassword('BOARDWORKS', field ?? '');
+  await Keychain.setGenericPassword('Unlockr', field ?? '');
 };
 
 export const getKeychainAccessToken = async () => {

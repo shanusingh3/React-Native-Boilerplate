@@ -116,7 +116,7 @@ const Login = () => {
                   <ErrorLabel error={errors.Username} />
                 )}
                 <PasswordInputText
-                  placeholder={'Password'}
+                  placeholder={t('login:placeholder:password')}
                   containerStyle={styles.textInputBetweenStyles}
                   handleChange={(value: any) => {
                     handleChange('Password')(value);
