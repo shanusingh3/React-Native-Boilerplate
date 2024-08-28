@@ -6,4 +6,7 @@ export default {
       password: 'Password',
     },
   },
+  property: {
+    unlockCTA: 'Unlock',
+  },
 };

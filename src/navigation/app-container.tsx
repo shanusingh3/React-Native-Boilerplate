@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Login, Splash, Dashboard } from '@screens';
+import { Login, Splash, Dashboard, PropertyDetails } from '@screens';
 import { ROUTES } from '@constants';
 
 const AuthNav = createStackNavigator();
@@ -25,6 +25,10 @@ const DashboardStack = () => (
     }}
   >
     <DashboardNav.Screen name={ROUTES.Dashboard} component={Dashboard} />
+    <DashboardNav.Screen
+      name={ROUTES.PropertyDetails}
+      component={PropertyDetails}
+    />
   </DashboardNav.Navigator>
 );
 

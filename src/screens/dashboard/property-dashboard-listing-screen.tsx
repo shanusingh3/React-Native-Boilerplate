@@ -8,21 +8,40 @@ import {
   FlatList,
   Image,
   StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import { scaler } from '@utils';
 import { House1, House2, House3, House4, House5 } from '@assets/images';
+import { useNavigation } from '@react-navigation/native';
+import { ROUTES } from '@constants';
 
 const DashboardListingScreen = () => {
+  const navigation = useNavigation();
   const _data = Array.from({ length: 1000 }, (_, index) => {
     const randomIndex = Math.floor(Math.random() * 5); // Generate a random index between 0 and 4
     const images = [House1, House2, House3, House4, House5];
     const imageUrl = images[randomIndex];
+    // Ensure at least one item has a location within a specific range (e.g., Bengaluru)
+    let latitude;
+    let longitude;
+
+    if (index === 0) {
+      latitude = 37.785834;
+      longitude = -122.406417;
+    } else {
+      latitude = Math.random() * 0.2 + 12.89;
+      longitude = Math.random() * 0.2 + 77.55;
+    }
 
     return {
       id: index + 1,
       title: `Property ${index + 1}`,
       details: 'Details of the props',
       imageUrl,
+      location: {
+        latitude,
+        longitude,
+      },
     };
   });
 
@@ -47,24 +66,30 @@ const DashboardListingScreen = () => {
   };
 
   const renderItem = ({ item }) => (
-    <View style={{ marginBottom: scaler(10), padding: 10 }}>
-      <View style={{ backgroundColor: '#f2f2f2', borderRadius: scaler(5) }}>
-        <Image
-          source={item.imageUrl}
-          style={{
-            width: '100%',
-            height: scaler(150),
-            borderRadius: scaler(5),
-          }}
-        />
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate(ROUTES.PropertyDetails, { item: item })
+      }
+    >
+      <View style={{ marginBottom: scaler(10), padding: 10 }}>
+        <View style={{ backgroundColor: '#f2f2f2', borderRadius: scaler(5) }}>
+          <Image
+            source={item.imageUrl}
+            style={{
+              width: '100%',
+              height: scaler(150),
+              borderRadius: scaler(5),
+            }}
+          />
+        </View>
+        <View style={{ padding: scaler(10) }}>
+          <Text>{item.title}</Text>
+          <Text numberOfLines={2} ellipsizeMode='tail'>
+            {item.details}
+          </Text>
+        </View>
       </View>
-      <View style={{ padding: scaler(10) }}>
-        <Text>{item.title}</Text>
-        <Text numberOfLines={2} ellipsizeMode='tail'>
-          {item.details}
-        </Text>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 
   return (

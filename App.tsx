@@ -1,5 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import { Appearance, BackHandler, Platform } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Alert,
+  Appearance,
+  BackHandler,
+  PermissionsAndroid,
+  Platform,
+} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '@shopify/restyle';
 import '@locale/localeConfig';
@@ -8,7 +14,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Toast from 'react-native-toast-message';
 import { navigationRef } from '@app/navigation/navigation-service';
 import { ErrorBoundary, Loader, OfflineBar, toastConfig } from '@components';
-import { persistor, store } from '@app/redux/store/store';
+import { dispatch, persistor, store } from '@app/redux/store/store';
 import { darkTheme, lightTheme } from '@theme/theme';
 import {
   checkMultiple,
@@ -17,10 +23,81 @@ import {
 } from 'react-native-permissions';
 import AppConatiner from '@app/navigation/app-container';
 const BACK_BUTTON_TO_EXIT_DELAY = 2000;
+import Geolocation from 'react-native-geolocation-service';
+import LocationThunk from '@app/redux/ducks/location/location-thunk';
 
 function App(): React.JSX.Element {
   const routeNameRef = useRef<string | undefined>('');
   const exitApp = useRef(false);
+  const [hasPermission, setHasPermission] = useState(false);
+
+  useEffect(() => {
+    const requestLocationPermission = async () => {
+      if (Platform.OS === 'ios') {
+        const status = await Geolocation.requestAuthorization('whenInUse');
+        if (status === 'granted') {
+          setHasPermission(true);
+        } else if (status === 'denied') {
+          Alert.alert('Location permission denied');
+        } else if (status === 'disabled') {
+          Alert.alert(
+            'Turn on Location Services in Settings to allow Unlockr to determine your location.',
+            '',
+            [
+              {
+                text: 'Go to Settings',
+                onPress: () => Linking.openURL('app-settings:'),
+              },
+            ],
+          );
+        }
+      } else if (Platform.OS === 'android' && Platform.Version >= 23) {
+        const status = await PermissionsAndroid.check(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        );
+
+        if (status !== PermissionsAndroid.RESULTS.GRANTED) {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+          );
+          setHasPermission(granted === PermissionsAndroid.RESULTS.GRANTED);
+        } else {
+          setHasPermission(true);
+        }
+      } else {
+        setHasPermission(true); // Assume permission granted for older Android versions
+      }
+    };
+
+    requestLocationPermission();
+  }, []);
+
+  useEffect(() => {
+    startWatchingLocation();
+  }, [hasPermission]);
+
+  const startWatchingLocation = async () => {
+    if (!hasPermission) {
+      console.warn('Location permission not granted');
+      return;
+    }
+
+    Geolocation.watchPosition(
+      (position) => {
+        console.log('user', position);
+
+        dispatch(LocationThunk.setLocation(position));
+      },
+      (error) => {
+        console.error(error.message);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 15000,
+        maximumAge: 0,
+      },
+    );
+  };
 
   useEffect(() => {
     const permissionsToCheck: any = Platform.select({

@@ -4,4 +4,5 @@ export const ROUTES = {
   AuthStack: 'AuthStack',
   DashboardStack: 'DashboardStack',
   Dashboard: 'Dashboard',
+  PropertyDetails: 'PropertyDetails',
 };
