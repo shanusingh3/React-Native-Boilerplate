@@ -1,9 +1,10 @@
-# Unlockr
+# React Native App BoilerPlate
 
-Unlockr is a powerful mobile application designed to streamline the process of accessing and managing properties for potential buyers. By leveraging cutting-edge technology, Unlockr provides a convenient and secure solution for both real estate agents and home seekers.
+A boilerplater for react native with new Arch enabled which supports React 18 and React Native 0.74.0 and above.
 
 App Video: https://drive.google.com/file/d/1-gDO3-1EBvYiMDa_ShNTMNhGoIeQVzL-/view?usp=sharing
-
+Username: Jhon
+Password: Doe
 
 ## Getting Started
 
@@ -12,9 +13,7 @@ Install CocoaPods dependencies with "yarn pod-install."
 To run the project, execute "yarn ios."
 Whenever you encounter problems with caches, you can run "yarn clean:ios."
 For code commits, please use "yarn commit" instead of using git commit or any other source control tool like an IDE or SourceTree.
-# React Native BoilerPlate
 
-A basic boilerplater for react native with new Arch enabled which supports React 18 and React Native 0.74.0 and above.
 
 ## Commit Strategies
 
